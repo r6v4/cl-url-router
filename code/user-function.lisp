@@ -31,7 +31,9 @@
         :synchronized nil ))
 
 (defun add-string-url-to-router (router url-string function)
-    (flet ((remove-empty-item (the-list)
+    (flet ((string-to-vector (string-message)
+                (map '(vector (unsigned-byte 8)) #'char-code string-message) )
+           (remove-empty-item (the-list)
                (remove-if (lambda (a) (equalp #() a)) the-list) ))
         (let* ((url-vector (string-to-vector url-string))
                (url-list (split-octets url-vector #(47) 1 64))
@@ -39,9 +41,7 @@
             (setf (gethash url-list router) function) )))
 
 (defun use-vector-url-in-router (router url-vector function-arg-list)
-    (flet ((string-to-vector (string-message)
-                (map '(vector (unsigned-byte 8)) #'char-code string-message) )
-           (remove-empty-item (the-list)
+    (flet ((remove-empty-item (the-list)
                 (remove-if (lambda (a) (equalp #() a)) the-list) ))
         (let* ((url-list (split-octets url-vector #(47) 1 64))
                (url-list (remove-empty-item url-list))
