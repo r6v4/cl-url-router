@@ -51,7 +51,7 @@
                             (let* ((url-short-list (subseq url-list 0 i))
                                    (funciton-in-map (gethash url-short-list router)) )
                                 (if function-in-map
-                                    (return-from mark-place funcion-in-map)
+                                    (return-from mark-place function-in-map)
                                     nil ))))))
             (if the-function
                 (funcall the-function function-arg-list)
