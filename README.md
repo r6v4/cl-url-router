@@ -62,6 +62,7 @@ sbcl
     (list 1 2 3 4 5))
 ;((1 2 3 4 5))
 
+;list task-list url-function (list http-arg-list);
 ```
 
 ## API
@@ -69,5 +70,5 @@ sbcl
 list split-octets (array message-octets, array split-vector, int vector-length, int list-max-length);
 hash-table create-router (void);
 function add-string-url-to-router (hash-table router-map, string url-string, function url-function);
-true use-vector-url-in-router (hash-table router-map, url-vector, list url-function-arg-list);
+true use-vector-url-in-router (hash-table router-map, url-vector, list function-arg-list);
 ```
