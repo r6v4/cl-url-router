@@ -49,7 +49,7 @@
                     (block mark-place
                         (loop for i from 0 below (length url-list) do
                             (let* ((url-short-list (subseq url-list 0 i))
-                                   (funciton-in-map (gethash url-short-list router)) )
+                                   (function-in-map (gethash url-short-list router)) )
                                 (if function-in-map
                                     (return-from mark-place function-in-map)
                                     nil ))))))
