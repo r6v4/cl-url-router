@@ -62,7 +62,7 @@ sbcl
     (list 1 2 3 4 5))
 ;((1 2 3 4 5))
 
-;list task-list url-function (list http-arg-list);
+;task-list url-function (list http-arg-list);
 ```
 
 ## API
