@@ -39,7 +39,7 @@ sbcl
 
 (cl-url-router:add-string-url-to-router 
     router-map 
-    "/123/456/789/" 
+    "/123/456/" 
     (lambda (a)
         (progn
             (format t "~A" a)
@@ -47,7 +47,7 @@ sbcl
 ;#<FUNCTION (LAMBDA (A)) {B800BB69FB}>
 (cl-url-router:add-string-url-to-router 
     router-map 
-    "/123/654/789/" 
+    "/123/654/" 
     (lambda (a)
         (list a)))
 ;#<FUNCTION (LAMBDA (A)) {B800BB6AAB}>
