@@ -2,7 +2,7 @@
     :name "cl-url-router"
     :description "web server url router"
     :author "r6v4@pm.me"
-    :version "1.0"
+    :version "2.0"
     :depends-on () 
     :serial t
     :components (
