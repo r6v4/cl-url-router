@@ -43,16 +43,21 @@
 (defun use-vector-url-in-router (router url-vector function-arg-list)
     (flet ((remove-empty-item (the-list)
                 (remove-if (lambda (a) (equalp #() a)) the-list) ))
-        (let* ((url-list (split-octets url-vector #(47) 1 64))
-               (url-list (remove-empty-item url-list))
-               (the-function
-                    (block mark-place
-                        (loop for i from 0 below (length url-list) do
-                            (let* ((url-short-list (subseq url-list 0 i))
-                                   (function-in-map (gethash url-short-list router)) )
-                                (if function-in-map
-                                    (return-from mark-place function-in-map)
-                                    nil ))))))
-            (if the-function
-                (funcall the-function function-arg-list)
-                nil))))
+        (block block-mark
+            (let* ( (url-list (split-octets url-vector #(47) 1 64))
+                    (url-list (remove-empty-item url-list))
+                    (url-list 
+                        (if (> (length url-list) 1) 
+                            url-list 
+                            (return-from block-mark nil) ))
+                    (the-function
+                            (block mark-place
+                                (loop for i from 1 below (length url-list) do
+                                    (let* ((url-short-list (subseq url-list 0 i))
+                                        (function-in-map (gethash url-short-list router)) )
+                                        (if function-in-map
+                                            (return-from mark-place function-in-map)
+                                            nil ))))))
+                (if the-function
+                    (funcall the-function function-arg-list)
+                    nil )))))
